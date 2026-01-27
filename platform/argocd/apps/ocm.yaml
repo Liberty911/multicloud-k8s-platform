@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ocm
+  namespace: argocd
+spec:
+  project: platform
+  source:
+    repoURL: https://github.com/Liberty911/multicloud-k8s-platform
+    targetRevision: main
+    path: platform/ocm
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: open-cluster-management
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

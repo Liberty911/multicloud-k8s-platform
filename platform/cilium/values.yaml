@@ -1,0 +1,14 @@
+# Minimal values for EKS lab.
+# If you already have another CNI installed by EKS, you should remove/disable AWS VPC CNI first
+# or install Cilium in chaining mode. For a clean setup: new cluster + remove aws-node.
+kubeProxyReplacement: true
+ipam:
+  mode: cluster-pool
+operator:
+  replicas: 1
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+  ui:
+    enabled: true

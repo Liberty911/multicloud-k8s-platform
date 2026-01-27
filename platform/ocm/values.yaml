@@ -1,0 +1,3 @@
+# Placeholder values.
+# OCM commonly installed via operator/olm or community helm/kustomize depending on distro.
+# If you tell me your preference (operator vs helm) I’ll lock the exact manifests.

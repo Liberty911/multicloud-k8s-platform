@@ -1,0 +1,3 @@
+# Placeholder values.
+# In production you’d use the official Karmada chart and configure certs, etc.
+# This repo keeps it simple; you can swap to the official helm install in ArgoCD.

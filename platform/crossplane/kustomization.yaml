@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: crossplane-system
+resources:
+  - install/crossplane-helm-release.yaml
+  - providers/provider-aws.yaml
+  - providers/provider-kubernetes.yaml
+  - providers/provider-helm.yaml
+  - aws/providerconfig-aws.yaml
+  - aws/xrd-xbucket.yaml
+  - aws/s3-composition.yaml

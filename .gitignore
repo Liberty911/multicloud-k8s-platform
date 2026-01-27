@@ -1,0 +1,16 @@
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.*
+**/*.tfvars
+
+# Local kubeconfigs
+kubeconfig*
+*.kubeconfig
+
+# Secrets
+**/*secret*
+**/*credentials*
+**/*.pem
+.env

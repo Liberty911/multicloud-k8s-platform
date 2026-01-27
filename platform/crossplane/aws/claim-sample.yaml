@@ -1,0 +1,8 @@
+apiVersion: platform.example.org/v1alpha1
+kind: BucketClaim
+metadata:
+  name: demo-bucketclaim
+spec:
+  parameters:
+    region: us-east-1
+    bucketName: demo-multicloud-platform-bucket-12345
