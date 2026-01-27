@@ -1,4 +1,7 @@
 # platform/observability/values.yaml
+crds:
+  enabled: false
+
 
 fullnameOverride: kube-prom-stack
 
