@@ -1,5 +1,3 @@
-crds:
-  enabled: false
 
 # platform/observability/values.yaml
 crds:
