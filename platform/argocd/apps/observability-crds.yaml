@@ -1,11 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: observability
+  name: observability-crds
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-10"
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-20"
 spec:
   project: platform
   destination:
@@ -13,15 +12,14 @@ spec:
     namespace: monitoring
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
-    chart: kube-prometheus-stack
-    targetRevision: 58.7.2
+    chart: prometheus-operator-crds
+    targetRevision: 14.0.0
     helm:
-      releaseName: kube-prom-stack
-      valueFiles:
-        - https://raw.githubusercontent.com/Liberty911/multicloud-k8s-platform/main/platform/observability/values.yaml
+      releaseName: prometheus-operator-crds
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
