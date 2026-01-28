@@ -1,8 +1,5 @@
-
-# platform/observability/values.yaml
 crds:
   enabled: false
-
 
 fullnameOverride: kube-prom-stack
 
@@ -11,35 +8,45 @@ prometheus:
     retention: 7d
     scrapeInterval: 30s
     evaluationInterval: 30s
+
     resources:
       requests:
         cpu: 200m
         memory: 512Mi
-    storageSpec: {}   # (lab) no PV; add later if you want persistence
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: gp3
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 20Gi
 
 grafana:
   enabled: true
-  admin:
-    existingSecret: grafana-admin
-    userKey: admin-user
-    passwordKey: admin-password
+
+  persistence:
+    enabled: true
+    type: pvc
+    storageClassName: gp3
+    accessModes:
+      - ReadWriteOnce
+    size: 5Gi
 
   service:
     type: ClusterIP
 
-  # Useful default dashboards + plugins
-  plugins:
-    - grafana-piechart-panel
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
 
-alertmanager:
-  alertmanagerSpec:
-    resources:
-      requests:
-        cpu: 100m
-        memory: 256Mi
+    hosts:
+      - host: grafana.local
+        paths:
+          - /
 
-kubeStateMetrics:
-  enabled: true
-
-nodeExporter:
-  enabled: true
+    pathType: Prefix
