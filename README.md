@@ -20,7 +20,15 @@ Production-grade folder structure
 
 All components are managed entirely via ArgoCD App-of-Apps.
 
-Structure of Platform Architecture
+# ArgoCD GitOps View
+
+The platform is fully managed using the App-of-Apps pattern.
+All components are continuously reconciled from GitHub.
+
+![ArgoCD UI](docs/argocd-ui.png)
+
+
+# Structure of Platform Architecture
 
 GitHub (source of truth)
         ↓
@@ -156,9 +164,4 @@ This project is designed for:
 
 -Cloud Infrastructure Engineer roles
 
-# ArgoCD GitOps View
 
-The platform is fully managed using the App-of-Apps pattern.
-All components are continuously reconciled from GitHub.
-
-![ArgoCD UI](docs/argocd-ui.png)
